@@ -82,11 +82,11 @@ submitBtn.addEventListener('click', function (e) {
 window.addEventListener('load', function() {
     if (localStorage.getItem("username") !== null) {
         console.log(localStorage.getItem("username"));
-        username.innerHTML = localStorage.getItem("username");
+        username.value = localStorage.getItem("username");
         rememberMe.checked = true;
     }
     else if(sessionStorage.getItem("user") !== null) {
-        user.innerHTML = sessionStorage.getItem("user");
+        user.value = sessionStorage.getItem("user");
     }
 });
 
