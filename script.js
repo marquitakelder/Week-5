@@ -10,7 +10,7 @@ var passLabel = document.querySelector('label[for=password]');
 
 var rememberMe = document.querySelector('input[type=checkbox]');
 
-var submitBtn = document.querySelector('button');
+var submitBtn = document.querySelector('#submit');
 
 var logoutBtn = document.getElementById('logout');
 
@@ -41,7 +41,7 @@ rememberMe.addEventListener('click', function (e) {
 });
 
 submitBtn.addEventListener('click', function (e) {
-        /*e.preventDefault();*/ if(username.value === "" && password.value === "") {
+        e.preventDefault(); if(username.value === "" && password.value === "") {
         userLabel.classList.add("error");
         username.classList.add("label","error");
         passLabel.classList.add("error");
@@ -59,7 +59,14 @@ submitBtn.addEventListener('click', function (e) {
             passLabel.classList.add("error");
             password.classList.add("label","error");
     }
-        else {
+        else { console.log("...test");
+            if (rememberMe.checked) {
+                localStorage.setItem("username", username.value);
+                sessionStorage.setItem("user", username.value);
+            }
+            else {
+                localStorage.removeItem("username");
+            }
             userLabel.classList.remove("error");
             username.classList.remove("label","error");
             passLabel.classList.remove("error");
@@ -70,43 +77,22 @@ submitBtn.addEventListener('click', function (e) {
             // username.disabled = true;
             // password.disabled = true;
     }
-    if (rememberMe.checkbox.checked === true) {
-        localStorage.setItem(username, username.value);
-    }
-    else {
-        localStorage.removeItem(username);
-    }
-    if (username.value.length > 0 && password.value.length > 0) {
-        sessionStorage.setItem(username, username.value);
-    }
 });
 
-function validateUsername () {
-    if (username.value.length === 0 || username.value === /^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$/) {
-        return false;
+window.addEventListener('load', function() {
+    if (localStorage.getItem("username") !== null) {
+        console.log(localStorage.getItem("username"));
+        username.innerHTML = localStorage.getItem("username");
+        rememberMe.checked = true;
     }
-};
-
-function validatePassword () {
-    if (password.value.length === 0 || password.value.length > 10 || password.value.length < 6) {
-        return false;
-    }
-};
-
-window.addEventListener('load', function(e) {
-    if (localStorage.username.value !== null) {
-        username = localStorage.username.value;
-        rememberMe.checkbox.checked = true;
-    }
-    else {
-        user.innerHTML =sessionStorage.user.value;
+    else if(sessionStorage.getItem("user") !== null) {
+        user.innerHTML = sessionStorage.getItem("user");
     }
 });
 
 logoutBtn.addEventListener('click', function(e) {
-    if (logoutBtn.addEventListener === 'click') {
         sessionStorage.clear();
-    }
+        window.location.replace('index.html');
 });
 
-"window.location.replace('index.html');"
+

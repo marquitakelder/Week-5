@@ -18,24 +18,24 @@
 		<nav>
 			<span id="user"></span>
 			<i class="fas fa-user"></i>
-			<button id=logout>Logout</button>
+			<button id="logout">Logout</button>
 		</nav>
 
 		<form action="">
 			<h1>Login</h1>
 
 			<label for="username" id="userLabel">Username</label>
-			<input id="username" type="text" />
+			<input id="username" type="text" pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$"/>
 
 			<label for="password">Password</label>
-			<input id="password" type="password" />
+			<input id="password" type="password" minlength="6" maxlength="10"/>
 
 			<div id="remember">
 				<input type="checkbox" id="checkbox" />
 				<label for="checkbox">Remember me</label>
 			</div>
 
-			<button type="submit">Sign In</button>
+			<button type="submit" id="submit">Sign In</button>
 
 			<p>Don't have an account? <span class="blue">Sign up</span></p>
 			<p><span class="blue">Forgot Password?</span></p>
