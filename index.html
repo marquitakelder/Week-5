@@ -25,10 +25,23 @@
 			<h1>Login</h1>
 
 			<label for="username" id="userLabel">Username</label>
-			<input id="username" type="text" pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$"/>
+			<!--! Missing required attribute to make this all work in the input below -->
+			<input
+				id="username"
+				type="text"
+				pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$"
+				required
+			/>
 
 			<label for="password">Password</label>
-			<input id="password" type="password" minlength="6" maxlength="10"/>
+			<!--! Missing required attribute to make this all work in the input below -->
+			<input
+				id="password"
+				type="password"
+				minlength="6"
+				maxlength="10"
+				required
+			/>
 
 			<div id="remember">
 				<input type="checkbox" id="checkbox" />
